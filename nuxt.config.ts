@@ -1,5 +1,6 @@
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', "@nuxt/icon"],
+
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -11,9 +12,12 @@ export default defineNuxtConfig({
      */
     componentDir: './components/ui'
   },
+
   icon: {
     serverBundle: {
       collections: ['uil', 'mdi'] // <!--- this
     }
-  }
+  },
+
+  compatibilityDate: '2024-09-17'
 })
