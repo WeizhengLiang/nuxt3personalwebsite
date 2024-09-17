@@ -1,15 +1,16 @@
 <script setup>
 import img1 from '@/public/images/test.gif'
+import polyspell_img from '@/public/images/triangle.png'
 
 const items = ref([
     {
-        title: "About me",
-        des: "Deploy your new project in one-click.",
-        tags: ['C#', 'Unity', 'PhotoShop', 'Vue3', 'Nuxt3'],
-        imgUrl: img1,
-        intro: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero rem sit soluta magni quod illum illo velit expedita unde iste. Veniam eius eos iste, a dolore rerum delectus hic at?",
-        aliveUrl: "@/blogs/aliveDemo",
-        SourceUrl: "@/blogs/SourceDemo",
+        title: "PolySpell",
+        des: "Survive and Spell",
+        tags: ['C#', 'Unity', 'PhotoShop'],
+        imgUrl: polyspell_img,
+        intro: "Dive into a world where your creativity and strategy shape the outcome, and every decision leads to a new adventure.",
+        aliveUrl: "https://play.unity.com/en/games/1e487e88-1290-4639-9562-490eca0f9a66/polyspell-v01",
+        SourceUrl: "https://github.com/WeizhengLiang/PolySpell",
         id: 1,
     }, {
         title: "Projects",
@@ -79,10 +80,14 @@ const tagClass = {
                             </Button>
                         </NuxtLink>
                         <div>
-                            <Button class="mr-4" variant="outline">Source Code</Button>
-                            <Button>
-                                See Alive
-                            </Button>
+                            <a :href="item.SourceUrl" target="_blank" rel="noopener noreferrer">
+                                <Button class="mr-4" variant="outline">Source Code</Button>
+                            </a>
+                            <a :href="item.aliveUrl" target="_blank" rel="noopener noreferrer">
+                                <Button>
+                                    See Alive
+                                </Button>
+                            </a>
                         </div>
                     </CardFooter>
                 </div>
