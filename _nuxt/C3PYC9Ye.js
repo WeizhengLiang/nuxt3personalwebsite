@@ -1,0 +1,1 @@
+import{_ as o,c as t,a,q as r,o as n}from"./Dwp7R5xO.js";const l={};function c(s,e){return n(),t("div",null,[e[0]||(e[0]=a("p",null,"These pages are using custom layout",-1)),r(s.$slots,"default")])}const d=o(l,[["render",c]]);export{d as default};
