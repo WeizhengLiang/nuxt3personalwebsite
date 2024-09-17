@@ -18,8 +18,8 @@ const items = ref([
         tags: ['C#', 'Unity', 'PhotoShop', 'Vue3', 'Nuxt3'],
         imgUrl: img1,
         intro: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero rem sit soluta magni quod illum illo velit expedita unde iste. Veniam eius eos iste, a dolore rerum delectus hic at?",
-        aliveUrl: "@/blogs/aliveDemo",
-        SourceUrl: "@/blogs/SourceDemo",
+        aliveUrl: "",
+        SourceUrl: "",
         id: 1,
     }, {
         title: "Contact",
@@ -27,8 +27,8 @@ const items = ref([
         tags: ['C#', 'Unity', 'PhotoShop', 'Vue3', 'Nuxt3'],
         imgUrl: img1,
         intro: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero rem sit soluta magni quod illum illo velit expedita unde iste. Veniam eius eos iste, a dolore rerum delectus hic at?",
-        aliveUrl: "@/blogs/aliveDemo",
-        SourceUrl: "@/blogs/SourceDemo",
+        aliveUrl: "",
+        SourceUrl: "",
         id: 1,
     }, {
         title: "More",
@@ -36,8 +36,8 @@ const items = ref([
         tags: ['C#', 'Unity', 'PhotoShop', 'Vue3', 'Nuxt3'],
         imgUrl: img1,
         intro: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero rem sit soluta magni quod illum illo velit expedita unde iste. Veniam eius eos iste, a dolore rerum delectus hic at?",
-        aliveUrl: "@/blogs/aliveDemo",
-        SourceUrl: "@/blogs/SourceDemo",
+        aliveUrl: "",
+        SourceUrl: "",
         id: 1,
     }
 ])
