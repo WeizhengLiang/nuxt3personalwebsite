@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import polyspell_img from '@/public/images/qudrilateral_form.png'
 
+
 const title = {
     title: 'PolySpell: Where Shapes Cast Spells',
     date: 'August 2024',
@@ -49,6 +50,34 @@ const links = {
   demo: 'https://play.unity.com/en/games/1e487e88-1290-4639-9562-490eca0f9a66/polyspell-v01',
   source: 'https://github.com/WeizhengLiang/PolySpell'
 }
+
+const gameFlowDiagram = ref(`
+graph TD
+    A[Player Input] -->|CreateShape| B[Shape Creation]
+    B -->|CastSpell| C[Spell Casting]
+    C -->|ApplyEffect| D[Enemy Reaction]
+    D -->|UpdateGameState| E[Player Feedback]
+    E --> A
+`)
+
+const codeSnippets = {
+  CreateShape: `void CreateShape(Vector2[] points) {
+    // Create a new polygon shape
+    PolygonCollider2D shape = gameObject.AddComponent<PolygonCollider2D>();
+    shape.points = points;
+}`,
+  CastSpell: `void CastSpell(PolygonCollider2D shape) {
+    // Determine spell type based on shape
+    SpellType spellType = DetermineSpellType(shape);
+    // Cast the spell
+    SpellManager.Cast(spellType);
+}`,
+  ApplyEffect: `void ApplyEffect(Enemy target, SpellType spellType) {
+    // Apply spell effect to the enemy
+    target.TakeDamage(spellType.damage);
+    target.ApplyStatusEffect(spellType.effect);
+}`
+}
 </script>
 
 <template>
@@ -68,6 +97,25 @@ const links = {
             </li>
           </ul>
         </BlogBody>
+      </div>
+
+      <!-- Game Flow Diagram and Code Snippets -->
+      <div>
+        <h2>Game Flow and Key Code Snippets</h2>
+        <BlogBody>
+          <p>This diagram illustrates the core gameplay loop of PolySpell, along with key code snippets:</p>
+        </BlogBody>
+        <div class="grid grid-cols-2 gap-4 my-4">
+          <div>
+            <vue-mermaid-string :value=gameFlowDiagram></vue-mermaid-string>
+          </div>
+          <div class="space-y-4">
+            <div v-for="(snippet, key) in codeSnippets" :key="key">
+              <h3 class="font-bold">{{ key }}()</h3>
+              <pre class="bg-gray-100 p-2 rounded"><code>{{ snippet }}</code></pre>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Placeholder for gameplay video -->
@@ -131,5 +179,11 @@ const links = {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-width: 100%;
+  overflow-x: auto;
 }
 </style>

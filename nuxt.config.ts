@@ -19,5 +19,8 @@ export default defineNuxtConfig({
     }
   },
 
-  compatibilityDate: '2024-09-17'
+  compatibilityDate: '2024-09-17',
+  plugins: [
+    '~/plugins/mermaid.js'
+  ],
 })
