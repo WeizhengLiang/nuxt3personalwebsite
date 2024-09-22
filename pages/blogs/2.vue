@@ -88,26 +88,24 @@ const codeSnippets = {
     <div class="blog-main-container">
       <BlogImage :image="gameImage" />
 
-      <div>
+      <BlogBody>
         <h2>Core Features</h2>
-        <BlogBody>
-          <ul class="list-disc pl-5">
-            <li v-for="feature in coreFeatures" :key="feature" class="mb-2">
-              {{ feature }}
-            </li>
-          </ul>
-        </BlogBody>
-      </div>
+        <ul class="list-disc pl-5">
+          <li v-for="feature in coreFeatures" :key="feature" class="mb-2">
+            {{ feature }}
+          </li>
+        </ul>
+      </BlogBody>
 
       <!-- Game Flow Diagram and Code Snippets -->
-      <div>
-        <h2>Game Flow and Key Code Snippets</h2>
         <BlogBody>
+          <h2>Game Flow and Key Code Snippets</h2>
           <p>This diagram illustrates the core gameplay loop of PolySpell, along with key code snippets:</p>
         </BlogBody>
-        <div class="grid grid-cols-2 gap-4 my-4">
-          <div>
-            <vue-mermaid-string :value=gameFlowDiagram></vue-mermaid-string>
+
+        <div class="flex justify-between gap-2 my-4">
+          <div class="flex justify-center items-center">
+            <vue-mermaid-string :value="gameFlowDiagram"></vue-mermaid-string>
           </div>
           <div class="space-y-4">
             <div v-for="(snippet, key) in codeSnippets" :key="key">
@@ -169,7 +167,7 @@ const codeSnippets = {
           It's a testament to the power of creative problem-solving and iterative design in game development.
         </p>
       </BlogBody>
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 
