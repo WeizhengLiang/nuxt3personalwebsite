@@ -1,0 +1,11 @@
+{
+  version: 1,
+  mediaFileName: 'Pattern_Based_Combat_003.mp4',
+  cutSegments: [
+    {
+      start: 3.1492500637500003,
+      end: 10.765083551250001,
+      name: '',
+    },
+  ],
+}

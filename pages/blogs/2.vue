@@ -2,13 +2,20 @@
 import { ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import polyspell_img from '@/public/images/qudrilateral_form.png'
 
+const qudrilateralFormImage = {
+    url: '/images/qudrilateral_form.png',
+    des: 'PolySpell gameplay screenshot: Bob creating a qudrilateral trail to cast a spell'
+}
+
+const MainBG = {
+    url: '/images/closeup_011.gif'
+}
 
 const title = {
     title: 'PolySpell: Where Shapes Cast Spells',
     date: 'August 2024',
-    image: polyspell_img
+    image: MainBG.url
 }
 
 const items = [
@@ -18,18 +25,42 @@ const items = [
     {type: 'Genre', text: ['Puzzle Strategy']},
 ]
 
-const intro = 'PolySpell is a unique puzzle game that blends shape-based spell casting with strategic combat. As a solo developer, I created this game to challenge players\' creativity and problem-solving skills in a vibrant, magical world.'
-
-const gameImage = {
-    url: polyspell_img,
-    des: 'PolySpell gameplay screenshot: Bob creating a polygonal trail to cast a spell'
-}
+//const intro = 'PolySpell is a unique puzzle game that blends shape-based spell casting with strategic combat. As a solo developer, I created this game to challenge players\' creativity and problem-solving skills in a vibrant, magical world.'
+const intro = 'It all started with a simple question: What if a game could teach players to see patterns in chaos? This question sparked the journey that led to the creation of ‘PolySpell,’ a game where every polygon tells a story. Dive into a world where your creativity and strategy shape the outcome, and every decision leads to a new adventure.'
 
 const coreFeatures = [
-  'Pattern-Based Combat: Create polygonal trails to trigger various magical effects',
-  'Strategic Energy Management: Balance spell-casting with energy conservation',
-  'Vibrant Neon Aesthetic: Immerse yourself in a colorful, fast-paced world',
-  'Dynamic Difficulty: Face evolving challenges as you progress'
+  {
+    title: 'Pattern-Based Combat',
+    description: 'Create polygonal trails to trigger various magical effects',
+    media: {
+      url: '/images/Pattern_Based_Combat_003.gif',
+      des: 'Pattern-Based Combat gameplay demonstration'
+    }
+  },
+  {
+    title: 'Vibrant Neon Aesthetic',
+    description: 'Immerse yourself in a colorful, fast-paced world',
+    media: {
+      url: '/images/Vibrant_Neon_Aesthetic.gif',
+      des: 'Vibrant Neon Aesthetic gameplay demonstration'
+    }
+  },
+  {
+    title: 'Strategic Energy Management',
+    description: 'Balance spell-casting with energy conservation',
+    media: {
+      url: '/images/Strategic_Energy_Management.gif',
+      des: 'Strategic Energy Management gameplay demonstration'
+    }
+  },
+  {
+    title: 'Dynamic Difficulty',
+    description: 'Face evolving challenges as you progress',
+    media: {
+      url: '/images/Dynamic_Difficulty.gif',
+      des: 'Dynamic Difficulty gameplay demonstration'
+    }
+  }
 ]
 
 const developmentProcess = [
@@ -86,15 +117,23 @@ const codeSnippets = {
     <BlogIntro :items="items" :intro="intro" />
 
     <div class="blog-main-container">
-      <BlogImage :image="gameImage" />
+      <BlogImage :image="qudrilateralFormImage" />
 
       <BlogBody>
         <h2>Core Features</h2>
-        <ul class="list-disc pl-5">
-          <li v-for="feature in coreFeatures" :key="feature" class="mb-2">
-            {{ feature }}
-          </li>
-        </ul>
+        <div class="grid grid-cols-2 gap-8">
+          <div v-for="feature in coreFeatures" :key="feature.title" class="mb-8">
+            <h3 class="font-bold">{{ feature.title }}</h3>
+            <p class="mb-4">{{ feature.description }}</p>
+            <img 
+              v-if="feature.media" 
+              :src="feature.media.url" 
+              :alt="feature.media.des"
+              class="rounded-lg shadow-lg mx-auto"
+              style="width: 480px; height: auto;"
+            />
+          </div>
+        </div>
       </BlogBody>
 
       <!-- Game Flow Diagram and Code Snippets -->

@@ -1,0 +1,11 @@
+{
+  version: 1,
+  mediaFileName: 'Vibrant_Neon_Aesthetic.mp4',
+  cutSegments: [
+    {
+      start: 27.340373565,
+      end: 33.5362136175,
+      name: '',
+    },
+  ],
+}
