@@ -216,6 +216,7 @@ const nextChatImage = () => {
   if (currentChatIndex.value < feedbackImages[currentChatGroup.value].length - 1) {
     currentChatIndex.value++
   }
+  
 }
 
 const previousChatImage = () => {
