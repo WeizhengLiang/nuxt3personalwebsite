@@ -151,6 +151,49 @@ const previousImage = () => {
     currentImageIndex.value--
   }
 }
+
+// 为聊天截图添加查看器状态
+const showChatViewer = ref(false)
+const currentChatIndex = ref(0)
+const currentChatGroup = ref('')
+
+const feedbackImages = {
+  playerFeedback: [
+    { url: '/images/player_feedback_1.png', des: 'Player sharing gameplay experience' },
+    { url: '/images/player_feedback_2.png', des: 'Suggestions for improvement' },
+    { url: '/images/player_feedback_3.png', des: 'Player discussing game mechanics' }
+  ],
+  bugFeedback: [
+    { url: '/images/bug_feedback_1.png', des: 'Critical bug report from player' }
+  ],
+  versionRelease: [
+    { url: '/images/release_1.png', des: 'New version announcement' },
+    { url: '/images/release_2.png', des: 'Player reactions to update' },
+    { url: '/images/release_3.png', des: 'Providing bug fixes and new features info' }
+  ]
+}
+
+const openChatViewer = (group, index) => {
+  currentChatGroup.value = group
+  currentChatIndex.value = index
+  showChatViewer.value = true
+}
+
+const closeChatViewer = () => {
+  showChatViewer.value = false
+}
+
+const nextChatImage = () => {
+  if (currentChatIndex.value < feedbackImages[currentChatGroup.value].length - 1) {
+    currentChatIndex.value++
+  }
+}
+
+const previousChatImage = () => {
+  if (currentChatIndex.value > 0) {
+    currentChatIndex.value--
+  }
+}
 </script>
 
 <template>
@@ -291,9 +334,90 @@ const previousImage = () => {
             </div>
 
             <!-- Playtesting and Refinement -->
-            <div>
-              <h3 class="font-bold text-xl">Playtesting and Refinement</h3>
-              <p class="mt-2">Continuously improved based on player feedback</p>
+            <div class="space-y-6">
+              <div>
+                <h3 class="font-bold text-xl">Playtesting and Refinement</h3>
+                <p class="mt-2 mb-6 text-gray-700">
+                  Throughout the development process, I maintained close communication with playtesters through our WeChat group. 
+                  Their feedback was instrumental in identifying issues, suggesting improvements, and validating new features. 
+                  This collaborative approach helped shape the game into a more polished and enjoyable experience.
+                </p>
+              </div>
+              
+              <div class="space-y-8">
+                <!-- Player Feedback Group -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                  <h4 class="text-lg font-semibold mb-3">Player Experience Feedback</h4>
+                  <div class="grid grid-cols-3 gap-4">
+                    <div v-for="(image, index) in feedbackImages.playerFeedback" 
+                         :key="index"
+                         class="relative group cursor-pointer"
+                         @click="openChatViewer('playerFeedback', index)"
+                    >
+                      <img 
+                        :src="image.url"
+                        :alt="image.des"
+                        class="rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                      />
+                      <div class="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-2 rounded-b-lg 
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {{ image.des }}
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 text-sm text-gray-600">
+                    Players sharing their gameplay experiences and suggestions for improvements
+                  </p>
+                </div>
+
+                <!-- Bug Report Group -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                  <h4 class="text-lg font-semibold mb-3">Bug Discovery</h4>
+                  <div class="flex justify-center">
+                    <div class="relative group cursor-pointer w-2/3"
+                         @click="openChatViewer('bugFeedback', 0)"
+                    >
+                      <img 
+                        :src="feedbackImages.bugFeedback[0].url"
+                        :alt="feedbackImages.bugFeedback[0].des"
+                        class="rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                      />
+                      <div class="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-2 rounded-b-lg 
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {{ feedbackImages.bugFeedback[0].des }}
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 text-sm text-gray-600">
+                    Critical bug report that helped improve game stability
+                  </p>
+                </div>
+
+                <!-- Version Update Group -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                  <h4 class="text-lg font-semibold mb-3">New Version Release</h4>
+                  <div class="grid grid-cols-3 gap-4">
+                    <div v-for="(image, index) in feedbackImages.versionRelease" 
+                         :key="index"
+                         class="relative group cursor-pointer"
+                         @click="openChatViewer('versionRelease', index)"
+                    >
+                      <img 
+                        :src="image.url"
+                        :alt="image.des"
+                        class="rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                      />
+                      <div class="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-2 rounded-b-lg 
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {{ image.des }}
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 text-sm text-gray-600">
+                    Announcing new features and bug fixes, along with player reactions
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </BlogBody>
@@ -369,6 +493,46 @@ const previousImage = () => {
       <button 
         class="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 transition-colors"
         @click.stop="closeImageViewer"
+      >
+        ×
+      </button>
+    </div>
+  </div>
+
+  <!-- Chat Image Viewer Modal -->
+  <div v-if="showChatViewer" 
+       class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
+       @click="closeChatViewer"
+  >
+    <div class="relative max-w-4xl mx-auto">
+      <img 
+        :src="feedbackImages[currentChatGroup][currentChatIndex].url"
+        :alt="feedbackImages[currentChatGroup][currentChatIndex].des"
+        class="max-h-[80vh] w-auto"
+      />
+      <div class="absolute bottom-4 left-0 right-0 text-center text-white">
+        <p class="text-lg mb-2">
+          Image {{ currentChatIndex + 1 }} of {{ feedbackImages[currentChatGroup].length }}
+        </p>
+        <p>{{ feedbackImages[currentChatGroup][currentChatIndex].des }}</p>
+      </div>
+      <button 
+        v-if="currentChatIndex > 0"
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-gray-300 transition-colors"
+        @click.stop="previousChatImage"
+      >
+        ←
+      </button>
+      <button 
+        v-if="currentChatIndex < feedbackImages[currentChatGroup].length - 1"
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-gray-300 transition-colors"
+        @click.stop="nextChatImage"
+      >
+        →
+      </button>
+      <button 
+        class="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 transition-colors"
+        @click.stop="closeChatViewer"
       >
         ×
       </button>
