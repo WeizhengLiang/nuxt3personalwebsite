@@ -65,8 +65,7 @@ const coreFeatures = [
 
 const developmentProcess = [
   'Conceptualization and Prototyping: Refined core mechanics through iterative design',
-  'Technical Implementation: Overcame challenges in polygon detection algorithms',
-  'Visual and Audio Integration: Blended custom assets with Unity Asset Store elements',
+  'Initial Prototype: Implemented core gameplay mechanics and basic features',
   'Playtesting and Refinement: Continuously improved based on player feedback'
 ]
 
@@ -263,16 +262,32 @@ const previousImage = () => {
               </div>
             </div>
 
-            <!-- Technical Implementation -->
-            <div>
-              <h3 class="font-bold text-xl">Technical Implementation</h3>
-              <p class="mt-2">Overcame challenges in polygon detection algorithms</p>
-            </div>
-
-            <!-- Visual and Audio Integration -->
-            <div>
-              <h3 class="font-bold text-xl">Visual and Audio Integration</h3>
-              <p class="mt-2">Blended custom assets with Unity Asset Store elements</p>
+            <!-- Initial Prototype -->
+            <div class="space-y-6">
+              <div>
+                <h3 class="font-bold text-xl">Initial Prototype</h3>
+                <p class="mt-2 mb-6 text-gray-700">
+                  The initial prototype focused on implementing the core mechanics of the game. 
+                  I started with the ball physics and basic polygon creation system. The prototype 
+                  helped validate the fun factor of drawing shapes and watching the ball interact 
+                  with them. This early version used simple visuals but established the foundation 
+                  for the game's unique gameplay loop.
+                </p>
+              </div>
+              
+              <div class="bg-gray-50 rounded-lg p-6">
+                <h4 class="text-lg font-semibold mb-4">Early Gameplay Demo</h4>
+                <div class="flex justify-center">
+                  <img 
+                    src="/images/initial_prototype.gif" 
+                    alt="Initial prototype gameplay demonstration"
+                    class="rounded-lg shadow-md w-2/3"
+                  />
+                </div>
+                <p class="mt-4 text-sm text-gray-600 text-center">
+                  Early prototype showing basic shape creation and ball physics
+                </p>
+              </div>
             </div>
 
             <!-- Playtesting and Refinement -->
