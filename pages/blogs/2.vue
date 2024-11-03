@@ -109,6 +109,35 @@ const codeSnippets = {
 }`
 }
 
+const keyAlgorithms = {
+  PolygonRecognition: `bool IsPointInPolygon(Vector2 point, Vector2[] vertices) {
+    int windingNumber = 0;
+    for (int i = 0; i < vertices.Length; i++) {
+        int next = (i + 1) % vertices.Length;
+        if (vertices[i].y <= point.y) {
+            if (vertices[next].y > point.y && IsLeft(vertices[i], vertices[next], point) > 0)
+                windingNumber++;
+        }
+        else if (vertices[next].y <= point.y && IsLeft(vertices[i], vertices[next], point) < 0)
+            windingNumber--;
+    }
+    return windingNumber != 0;
+}`,
+  BallPhysics: `void UpdateBallPhysics(Ball ball) {
+    Vector2 velocity = ball.GetVelocity();
+    float speed = velocity.magnitude;
+    
+    // Apply energy loss over time
+    speed *= (1 - energyLossRate * Time.deltaTime);
+    
+    // Update velocity with new speed
+    ball.SetVelocity(velocity.normalized * speed);
+    
+    // Check for collisions and apply bounce effects
+    HandleCollisions(ball);
+}`
+}
+
 const designSketches = [
   {
     url: '/images/PrototypePage1.png',
@@ -194,6 +223,10 @@ const previousChatImage = () => {
     currentChatIndex.value--
   }
 }
+
+const openLink = (url) => {
+  window.open(url, '_blank')
+}
 </script>
 
 <template>
@@ -240,55 +273,29 @@ const previousChatImage = () => {
         </div>
         
         <!-- Key Algorithms -->
-        <div class="my-8">
-          <BlogBody>
-            <h2>Key Algorithms</h2>
-            <div class="space-y-6">
-              <div>
-                <h3 class="font-bold text-xl mb-4">Polygon Recognition</h3>
-                <div class="bg-gray-50 rounded-lg p-6">
-                  <pre class="bg-gray-100 p-4 rounded-lg"><code>bool IsPointInPolygon(Vector2 point, Vector2[] vertices) {
-      int windingNumber = 0;
-      for (int i = 0; i < vertices.Length; i++) {
-          int next = (i + 1) % vertices.Length;
-          if (vertices[i].y <= point.y) {
-              if (vertices[next].y > point.y && IsLeft(vertices[i], vertices[next], point) > 0)
-                  windingNumber++;
-          }
-          else if (vertices[next].y <= point.y && IsLeft(vertices[i], vertices[next], point) < 0)
-              windingNumber--;
-      }
-      return windingNumber != 0;
-  }</code></pre>
-                  <p class="mt-4 text-sm text-gray-600">
-                    Winding number algorithm for accurate point-in-polygon detection
-                  </p>
-                </div>
-              </div>
-
-              <div>
-                <h3 class="font-bold text-xl mb-4">Dynamic Ball Physics</h3>
-                <div class="bg-gray-50 rounded-lg p-6">
-                  <pre class="bg-gray-100 p-4 rounded-lg"><code>void UpdateBallPhysics(Ball ball) {
-      Vector2 velocity = ball.GetVelocity();
-      float speed = velocity.magnitude;
-      
-      // Apply energy loss over time
-      speed *= (1 - energyLossRate * Time.deltaTime);
-      
-      // Update velocity with new speed
-      ball.SetVelocity(velocity.normalized * speed);
-      
-      // Check for collisions and apply bounce effects
-      HandleCollisions(ball);
-  }</code></pre>
-                  <p class="mt-4 text-sm text-gray-600">
-                    Custom physics system for smooth ball movement and collision handling
-                  </p>
-                </div>
+        <div class="mt-8">
+          <h3 class="font-bold text-xl mb-4">Key Algorithms</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="text-lg font-semibold mb-3">Polygon Recognition</h4>
+              <div class="bg-gray-50 rounded-lg p-6">
+                <pre class="bg-gray-100 p-4 rounded-lg"><code>{{ keyAlgorithms.PolygonRecognition }}</code></pre>
+                <p class="mt-4 text-sm text-gray-600">
+                  Winding number algorithm for accurate point-in-polygon detection
+                </p>
               </div>
             </div>
-          </BlogBody>
+
+            <div>
+              <h4 class="text-lg font-semibold mb-3">Dynamic Ball Physics</h4>
+              <div class="bg-gray-50 rounded-lg p-6">
+                <pre class="bg-gray-100 p-4 rounded-lg"><code>{{ keyAlgorithms.BallPhysics }}</code></pre>
+                <p class="mt-4 text-sm text-gray-600">
+                  Custom physics system for smooth ball movement and collision handling
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -484,14 +491,49 @@ const previousChatImage = () => {
         <h2>Learning Outcome</h2>
         <BlogBody>
           <p>{{ learningOutcome }}</p>
+
+          <h3 class="font-bold text-xl mb-4">Conclusion</h3>
+          <p class="mb-4">
+            PolySpell successfully achieved its goal of creating an engaging 2D roguelike that merges action, strategy, and puzzle-solving through pattern-based spell casting. The game currently includes:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 mb-6">
+            <li>A fully developed initial level that introduces and balances the core mechanics effectively.</li>
+            <li>Smooth, responsive gameplay optimized for desktop platforms, with future plans for expansion to mobile devices.</li>
+            <li>A cohesive neon-themed aesthetic that blends custom and sourced assets seamlessly.</li>
+          </ul>
+
+          <h3 class="font-bold text-xl mb-4">Reflection</h3>
+          <p class="mb-6">
+            Developing PolySpell was a transformative experience that taught me invaluable lessons. From integrating the winding number algorithm to refining gameplay based on user feedback, this project emphasized the importance of persistence and maintaining a holistic view of development. It reinforced the critical role of feedback and iterative design in crafting a polished and engaging final product.
+          </p>
+        </BlogBody>
+      </div>
+
+      <div class="mt-8">
+        <h2>Future Plans</h2>
+        <BlogBody>
+          <p class="mb-4">
+            While PolySpell has achieved its initial goals, there are exciting features planned for future updates:
+          </p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>
+              <strong>Multiplayer Mode:</strong> Implementing a competitive two-player mode where players can challenge each other's spell-casting skills in real-time duels.
+            </li>
+            <li>
+              <strong>Online Leaderboard:</strong> Adding a global ranking system for single-player mode, allowing players to compete for high scores and compare their performance with the community.
+            </li>
+          </ul>
+          <p class="mt-4">
+            These additions aim to enhance the social aspect of the game while maintaining its core focus on creative spell-casting and strategic gameplay.
+          </p>
         </BlogBody>
       </div>
 
       <div class="flex justify-between mt-6">
-        <Button @click="window.open(links.demo, '_blank')">
+        <Button @click="openLink(links.demo)">
           Play Demo
         </Button>
-        <Button @click="window.open(links.source, '_blank')" variant="outline">
+        <Button @click="openLink(links.source)" variant="outline">
           View Source Code
         </Button>
       </div>
