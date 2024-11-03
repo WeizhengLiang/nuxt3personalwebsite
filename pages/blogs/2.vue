@@ -109,6 +109,49 @@ const codeSnippets = {
     target.ApplyStatusEffect(spellType.effect);
 }`
 }
+
+const designSketches = [
+  {
+    url: '/images/PrototypePage1.png',
+    des: 'Game Scene Elements and Energy System Design'
+  },
+  {
+    url: '/images/PrototypePage2.png',
+    des: 'Basic Player Movement and Spell Casting'
+  },
+  {
+    url: '/images/PrototypePage3.png',
+    des: 'Spell pattern variations'
+  },
+  {
+    url: '/images/PrototypePage4.png',
+    des: 'Player Feedback and Game Cycle Design'
+  }
+]
+
+const showViewer = ref(false)
+const currentImageIndex = ref(0)
+
+const openImageViewer = (index) => {
+  currentImageIndex.value = index
+  showViewer.value = true
+}
+
+const closeImageViewer = () => {
+  showViewer.value = false
+}
+
+const nextImage = () => {
+  if (currentImageIndex.value < designSketches.length - 1) {
+    currentImageIndex.value++
+  }
+}
+
+const previousImage = () => {
+  if (currentImageIndex.value > 0) {
+    currentImageIndex.value--
+  }
+}
 </script>
 
 <template>
@@ -156,18 +199,88 @@ const codeSnippets = {
       </div>
 
       <!-- Placeholder for gameplay video -->
-      <div class="my-4">
+      <!-- <div class="my-4">
         [Placeholder: Short gameplay video showcasing pattern-based combat and neon aesthetics]
-      </div>
+      </div> -->
 
       <div>
         <h2>Development Journey</h2>
         <BlogBody>
-          <ul class="list-disc pl-5">
-            <li v-for="step in developmentProcess" :key="step" class="mb-2">
-              {{ step }}
-            </li>
-          </ul>
+          <div class="space-y-12">
+            <!-- Conceptualization and Prototyping -->
+            <div class="space-y-8">
+              <div>
+                <h3 class="font-bold text-xl mb-4">Conceptualization and Prototyping</h3>
+                <p class="mt-2 mb-6 text-gray-700">
+                  The project began with brainstorming sessions aimed at defining the core gameplay mechanics and visual style. 
+                  The concept of using polygonal patterns to trigger various effects quickly became central to the project. 
+                  Initially, the idea was for players to create these polygonal patterns by clicking on chosen vertices with the mouse.
+                </p>
+
+                <!-- 添加灵感来源部分 -->
+                <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                  <h4 class="text-lg font-semibold mb-3">Inspiration</h4>
+                  <div class="flex items-start gap-6">
+                    <img 
+                      src="/images/3d_pinball.gif" 
+                      alt="3D Pinball Space Cadet Screenshot"
+                      class="w-1/3 rounded-lg shadow-md"
+                    />
+                    <p class="text-gray-700">
+                      However, this initial vision evolved during development. I was inspired by recalling the very first game 
+                      I ever played on a PC, 3D Pinball for Windows - Space Cadet. This memory led me to incorporate a similar mechanic 
+                      where the ball bounces dynamically within the game, mirroring the engaging physics of Space Cadet.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- 设计草图展示 -->
+                <div class="mt-8">
+                  <h4 class="text-lg font-semibold mb-4">Early Design Sketches</h4>
+                  <p class="mb-4 text-gray-600">These sketches document the evolution of the core gameplay mechanics:</p>
+                  <div class="grid grid-cols-2 gap-6">
+                    <div v-for="(sketch, index) in designSketches" 
+                         :key="index"
+                         class="relative group cursor-pointer"
+                         @click="openImageViewer(index)"
+                    >
+                      <div class="absolute top-2 left-2 bg-black/70 text-white px-3 py-1 rounded-full">
+                        Step {{ index + 1 }}
+                      </div>
+                      <img 
+                        :src="sketch.url"
+                        :alt="sketch.des"
+                        class="rounded-lg shadow-md group-hover:shadow-lg transition-shadow duration-300"
+                        style="width: 100%; height: auto;"
+                      />
+                      <div class="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-2 rounded-b-lg 
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {{ sketch.des }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Technical Implementation -->
+            <div>
+              <h3 class="font-bold text-xl">Technical Implementation</h3>
+              <p class="mt-2">Overcame challenges in polygon detection algorithms</p>
+            </div>
+
+            <!-- Visual and Audio Integration -->
+            <div>
+              <h3 class="font-bold text-xl">Visual and Audio Integration</h3>
+              <p class="mt-2">Blended custom assets with Unity Asset Store elements</p>
+            </div>
+
+            <!-- Playtesting and Refinement -->
+            <div>
+              <h3 class="font-bold text-xl">Playtesting and Refinement</h3>
+              <p class="mt-2">Continuously improved based on player feedback</p>
+            </div>
+          </div>
         </BlogBody>
       </div>
 
@@ -207,6 +320,44 @@ const codeSnippets = {
         </p>
       </BlogBody>
     <!-- </div> -->
+  </div>
+
+  <!-- Image Viewer Modal -->
+  <div v-if="showViewer" 
+       class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
+       @click="closeImageViewer"
+  >
+    <div class="relative max-w-4xl mx-auto">
+      <img 
+        :src="designSketches[currentImageIndex].url"
+        :alt="designSketches[currentImageIndex].des"
+        class="max-h-[80vh] w-auto"
+      />
+      <div class="absolute bottom-4 left-0 right-0 text-center text-white">
+        <p class="text-lg mb-2">Step {{ currentImageIndex + 1 }} of 4</p>
+        <p>{{ designSketches[currentImageIndex].des }}</p>
+      </div>
+      <button 
+        v-if="currentImageIndex > 0"
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-gray-300 transition-colors"
+        @click.stop="previousImage"
+      >
+        ←
+      </button>
+      <button 
+        v-if="currentImageIndex < designSketches.length - 1"
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-gray-300 transition-colors"
+        @click.stop="nextImage"
+      >
+        →
+      </button>
+      <button 
+        class="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 transition-colors"
+        @click.stop="closeImageViewer"
+      >
+        ×
+      </button>
+    </div>
   </div>
 </template>
 
