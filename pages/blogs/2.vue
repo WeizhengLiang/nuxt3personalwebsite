@@ -238,6 +238,58 @@ const previousChatImage = () => {
             </div>
           </div>
         </div>
+        
+        <!-- Key Algorithms -->
+        <div class="my-8">
+          <BlogBody>
+            <h2>Key Algorithms</h2>
+            <div class="space-y-6">
+              <div>
+                <h3 class="font-bold text-xl mb-4">Polygon Recognition</h3>
+                <div class="bg-gray-50 rounded-lg p-6">
+                  <pre class="bg-gray-100 p-4 rounded-lg"><code>bool IsPointInPolygon(Vector2 point, Vector2[] vertices) {
+      int windingNumber = 0;
+      for (int i = 0; i < vertices.Length; i++) {
+          int next = (i + 1) % vertices.Length;
+          if (vertices[i].y <= point.y) {
+              if (vertices[next].y > point.y && IsLeft(vertices[i], vertices[next], point) > 0)
+                  windingNumber++;
+          }
+          else if (vertices[next].y <= point.y && IsLeft(vertices[i], vertices[next], point) < 0)
+              windingNumber--;
+      }
+      return windingNumber != 0;
+  }</code></pre>
+                  <p class="mt-4 text-sm text-gray-600">
+                    Winding number algorithm for accurate point-in-polygon detection
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="font-bold text-xl mb-4">Dynamic Ball Physics</h3>
+                <div class="bg-gray-50 rounded-lg p-6">
+                  <pre class="bg-gray-100 p-4 rounded-lg"><code>void UpdateBallPhysics(Ball ball) {
+      Vector2 velocity = ball.GetVelocity();
+      float speed = velocity.magnitude;
+      
+      // Apply energy loss over time
+      speed *= (1 - energyLossRate * Time.deltaTime);
+      
+      // Update velocity with new speed
+      ball.SetVelocity(velocity.normalized * speed);
+      
+      // Check for collisions and apply bounce effects
+      HandleCollisions(ball);
+  }</code></pre>
+                  <p class="mt-4 text-sm text-gray-600">
+                    Custom physics system for smooth ball movement and collision handling
+                  </p>
+                </div>
+              </div>
+            </div>
+          </BlogBody>
+        </div>
       </div>
 
       <!-- Placeholder for gameplay video -->
@@ -423,18 +475,10 @@ const previousChatImage = () => {
         </BlogBody>
       </div>
 
-      <div>
-        <h2>Key Challenge & Solution</h2>
-        <BlogBody>
-          <p><strong>Challenge:</strong> {{ challengeAndSolution.challenge }}</p>
-          <p><strong>Solution:</strong> {{ challengeAndSolution.solution }}</p>
-        </BlogBody>
-      </div>
-
       <!-- Placeholder for before/after comparison image -->
-      <div class="my-4">
+      <!-- <div class="my-4">
         [Placeholder: Before/After image comparing ray-casting and winding number algorithm results]
-      </div>
+      </div> -->
 
       <div>
         <h2>Learning Outcome</h2>
