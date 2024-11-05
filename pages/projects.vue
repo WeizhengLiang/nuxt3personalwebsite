@@ -1,6 +1,6 @@
 <script setup>
 import img1 from '@/public/images/test.gif'
-import polyspell_img from '@/public/images/triangle.png'
+import polyspell_img from '@/public/images/PolySpell/triangle.png'
 
 const items = ref([
     {
@@ -13,14 +13,14 @@ const items = ref([
         SourceUrl: "https://github.com/WeizhengLiang/PolySpell",
         id: 2,
     }, {
-        title: "Projects",
-        des: "Deploy your new project in one-click.",
-        tags: ['C#', 'Unity', 'PhotoShop', 'Vue3', 'Nuxt3'],
+        title: "Dungball Domination",
+        des: "A Game Jam Adventure",
+        tags: ['C#', 'Unity'],
         imgUrl: img1,
-        intro: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero rem sit soluta magni quod illum illo velit expedita unde iste. Veniam eius eos iste, a dolore rerum delectus hic at?",
-        aliveUrl: "",
-        SourceUrl: "",
-        id: 1,
+        intro: "Get ready to roll with Dungball Domination, a cartoony top-down view casual game! After your beloved dung ball being trampled by a farmer, your mission is to contaminate the farm to take revenge on the farmer!",
+        aliveUrl: "https://ldjam.com/events/ludum-dare/56/dungball-domination",
+        SourceUrl: "https://github.com/minnnpan/ShiKeLang",
+        id: 3,
     }, {
         title: "Contact",
         des: "Deploy your new project in one-click.",

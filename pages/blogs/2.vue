@@ -4,12 +4,12 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 const qudrilateralFormImage = {
-    url: '/images/qudrilateral_form.png',
+    url: '/images/PolySpell/qudrilateral_form.png',
     des: 'PolySpell gameplay screenshot: Bob creating a qudrilateral trail to cast a spell'
 }
 
 const MainBG = {
-    url: '/images/closeup_011.gif'
+    url: '/images/PolySpell/closeup_011.gif'
 }
 
 const title = {
@@ -33,7 +33,7 @@ const coreFeatures = [
     title: 'Pattern-Based Combat',
     description: 'Create polygonal trails to trigger various magical effects',
     media: {
-      url: '/images/Pattern_Based_Combat_003.gif',
+      url: '/images/PolySpell/Pattern_Based_Combat_003.gif',
       des: 'Pattern-Based Combat gameplay demonstration'
     }
   },
@@ -41,7 +41,7 @@ const coreFeatures = [
     title: 'Vibrant Neon Aesthetic',
     description: 'Immerse yourself in a colorful, fast-paced world',
     media: {
-      url: '/images/Vibrant_Neon_Aesthetic.gif',
+      url: '/images/PolySpell/Vibrant_Neon_Aesthetic.gif',
       des: 'Vibrant Neon Aesthetic gameplay demonstration'
     }
   },
@@ -49,7 +49,7 @@ const coreFeatures = [
     title: 'Strategic Energy Management',
     description: 'Balance spell-casting with energy conservation',
     media: {
-      url: '/images/Strategic_Energy_Management.gif',
+      url: '/images/PolySpell/Strategic_Energy_Management.gif',
       des: 'Strategic Energy Management gameplay demonstration'
     }
   },
@@ -57,7 +57,7 @@ const coreFeatures = [
     title: 'Dynamic Difficulty',
     description: 'Face evolving challenges as you progress',
     media: {
-      url: '/images/Dynamic_Difficulty.gif',
+      url: '/images/PolySpell/Dynamic_Difficulty.gif',
       des: 'Dynamic Difficulty gameplay demonstration'
     }
   }
@@ -140,19 +140,19 @@ const keyAlgorithms = {
 
 const designSketches = [
   {
-    url: '/images/PrototypePage1.png',
+    url: '/images/PolySpell/PrototypePage1.png',
     des: 'Game Scene Elements and Energy System Design'
   },
   {
-    url: '/images/PrototypePage2.png',
+    url: '/images/PolySpell/PrototypePage2.png',
     des: 'Basic Player Movement and Spell Casting'
   },
   {
-    url: '/images/PrototypePage3.png',
+    url: '/images/PolySpell/PrototypePage3.png',
     des: 'Spell pattern variations'
   },
   {
-    url: '/images/PrototypePage4.png',
+    url: '/images/PolySpell/PrototypePage4.png',
     des: 'Player Feedback and Game Cycle Design'
   }
 ]
@@ -188,17 +188,17 @@ const currentChatGroup = ref('')
 
 const feedbackImages = {
   playerFeedback: [
-    { url: '/images/player_feedback_1.png', des: 'Player sharing gameplay experience' },
-    { url: '/images/player_feedback_2.png', des: 'Suggestions for improvement' },
-    { url: '/images/player_feedback_3.png', des: 'Player discussing game mechanics' }
+    { url: '/images/PolySpell/player_feedback_1.png', des: 'Player sharing gameplay experience' },
+    { url: '/images/PolySpell/player_feedback_2.png', des: 'Suggestions for improvement' },
+    { url: '/images/PolySpell/player_feedback_3.png', des: 'Player discussing game mechanics' }
   ],
   bugFeedback: [
-    { url: '/images/bug_feedback_1.png', des: 'Critical bug report from player' }
+    { url: '/images/PolySpell/bug_feedback_1.png', des: 'Critical bug report from player' }
   ],
   versionRelease: [
-    { url: '/images/release_1.png', des: 'New version announcement' },
-    { url: '/images/release_2.png', des: 'Player reactions to update' },
-    { url: '/images/release_3.png', des: 'Providing bug fixes and new features info' }
+    { url: '/images/PolySpell/release_1.png', des: 'New version announcement' },
+    { url: '/images/PolySpell/release_2.png', des: 'Player reactions to update' },
+    { url: '/images/PolySpell/release_3.png', des: 'Providing bug fixes and new features info' }
   ]
 }
 
@@ -324,7 +324,7 @@ const openLink = (url) => {
                   <h4 class="text-lg font-semibold mb-3">Inspiration</h4>
                   <div class="flex items-start gap-6">
                     <img 
-                      src="/images/3d_pinball.gif" 
+                      src="/images/PolySpell/3d_pinball.gif" 
                       alt="3D Pinball Space Cadet Screenshot"
                       class="w-1/3 rounded-lg shadow-md"
                     />
@@ -382,7 +382,7 @@ const openLink = (url) => {
                 <h4 class="text-lg font-semibold mb-4">Early Gameplay Demo</h4>
                 <div class="flex justify-center">
                   <img 
-                    src="/images/initial_prototype.gif" 
+                    src="/images/PolySpell/initial_prototype.gif" 
                     alt="Initial prototype gameplay demonstration"
                     class="rounded-lg shadow-md w-2/3"
                   />
