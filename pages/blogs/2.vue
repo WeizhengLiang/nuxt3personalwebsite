@@ -216,7 +216,7 @@ const nextChatImage = () => {
   if (currentChatIndex.value < feedbackImages[currentChatGroup.value].length - 1) {
     currentChatIndex.value++
   }
-  
+
 }
 
 const previousChatImage = () => {
@@ -437,11 +437,13 @@ const openLink = (url) => {
                     <div class="relative group cursor-pointer w-2/3"
                          @click="openChatViewer('bugFeedback', 0)"
                     >
+                    <div class="flex justify-center items-center">
                       <img 
                         :src="feedbackImages.bugFeedback[0].url"
                         :alt="feedbackImages.bugFeedback[0].des"
-                        class="rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                        class="rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 w-1/2"
                       />
+                    </div>
                       <div class="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-2 rounded-b-lg 
                                 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         {{ feedbackImages.bugFeedback[0].des }}
