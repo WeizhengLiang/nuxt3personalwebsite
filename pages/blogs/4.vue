@@ -293,7 +293,7 @@ const showCodeModal = ref(false)
               <div class="relative aspect-video bg-gray-900 rounded-lg overflow-hidden cursor-pointer" 
                    @click="showCodeModal = true">
                 <div class="absolute inset-0 p-4">
-                  <pre class="text-sm h-full overflow-hidden"><code class="language-csharp">{{ hitDetectionCode }}</code></pre>
+                  <pre class="text-sm h-full overflow-hidden"><code class="language-cs">{{ hitDetectionCode }}</code></pre>
                 </div>
                 <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                   <span class="text-white text-sm">Click to view full code</span>
@@ -674,7 +674,7 @@ const showCodeModal = ref(false)
         </button>
       </div>
       <div class="p-4">
-        <pre class="!m-0"><code class="language-csharp">{{ hitDetectionCode }}</code></pre>
+        <pre class="!m-0"><code class="language-cs">{{ hitDetectionCode }}</code></pre>
       </div>
     </div>
   </div>
