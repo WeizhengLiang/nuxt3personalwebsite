@@ -66,7 +66,7 @@ const codeSnippets = [
   {
     title: '[功能1]',
     code: `[代码片段1]`,
-    language: 'cs'
+    language: 'javascript'
   },
   // ... 更多代码片段
 ]
@@ -75,7 +75,7 @@ const keyAlgorithms = [
   {
     title: '[算法1]',
     code: `[算法实现代码]`,
-    language: 'cs'
+    language: 'javascript'
   },
   // ... 更多算法
 ]
