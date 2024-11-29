@@ -66,7 +66,7 @@ const codeSnippets = [
   {
     title: '[功能1]',
     code: `[代码片段1]`,
-    language: 'typescript'
+    language: 'cs'
   },
   // ... 更多代码片段
 ]
@@ -75,7 +75,7 @@ const keyAlgorithms = [
   {
     title: '[算法1]',
     code: `[算法实现代码]`,
-    language: 'typescript'
+    language: 'cs'
   },
   // ... 更多算法
 ]
@@ -225,7 +225,7 @@ sequenceDiagram
     AC->>CUI: Update Weapon Display
 `)
 
-const hitDetectionCode = `private void Update()
+const hitDetectionCode = ref(`private void Update()
 {
     if (isInImpactPhase)
     {
@@ -267,7 +267,7 @@ private void CheckHitAtPoint(Transform attackPoint, float attackRadius, Weapon w
     {
         ProcessPotentialTarget(hitCollider, attackPoint.position, weapon);
     }
-}`
+}`)
 
 const showCodeModal = ref(false)
 </script>
@@ -385,7 +385,7 @@ const showCodeModal = ref(false)
             </div>
 
             <!-- Weapon Switch Sequence -->
-            <div class="relative">
+            <!-- <div class="relative">
               <h4 class="font-semibold text-lg mb-2">2. Weapon Switch Sequence</h4>
               <p class="text-gray-700 mb-4">
                 Shows the process of switching weapons and updating related systems:
@@ -398,7 +398,7 @@ const showCodeModal = ref(false)
                   ></vue-mermaid-string>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </BlogBody>
