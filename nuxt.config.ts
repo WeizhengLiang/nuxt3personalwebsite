@@ -21,11 +21,12 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-09-17',
   plugins: [
-    '~/plugins/mermaid.js'
+    '~/plugins/mermaid.js',
+    '~/plugins/prism.ts'
   ],
 
   css: [
     '@/components/ui/code-block/styles.css',
-    'prismjs/themes/prism-tomorrow.css'
+    'prismjs/themes/prism.css'
   ],
 })
