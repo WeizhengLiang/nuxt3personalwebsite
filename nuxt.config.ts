@@ -23,4 +23,9 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/mermaid.js'
   ],
+
+  css: [
+    '@/components/ui/code-block/styles.css',
+    'prismjs/themes/prism-tomorrow.css'
+  ],
 })

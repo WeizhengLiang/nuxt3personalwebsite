@@ -1,6 +1,7 @@
 <script setup>
-import img1 from '@/public/images/test.gif'
 import polyspell_img from '@/public/images/PolySpell/triangle.png'
+import dungball_img from '@/public/images/DungBallDomination/mainmenu.png'
+import MCS_img from '@/public/images/MCS/MCS_003.gif'
 
 const items = ref([
     {
@@ -16,25 +17,25 @@ const items = ref([
         title: "Dungball Domination",
         des: "A Game Jam Adventure",
         tags: ['C#', 'Unity'],
-        imgUrl: img1,
-        intro: "Get ready to roll with Dungball Domination, a cartoony top-down view casual game! After your beloved dung ball being trampled by a farmer, your mission is to contaminate the farm to take revenge on the farmer!",
+        imgUrl: dungball_img,
+        intro: "After your beloved dung ball being trampled by a farmer, your mission is to contaminate the farm to take revenge on the farmer!",
         aliveUrl: "https://ldjam.com/events/ludum-dare/56/dungball-domination",
         SourceUrl: "https://github.com/minnnpan/ShiKeLang",
         id: 3,
     }, {
-        title: "Contact",
-        des: "Deploy your new project in one-click.",
-        tags: ['C#', 'Unity', 'PhotoShop', 'Vue3', 'Nuxt3'],
-        imgUrl: img1,
-        intro: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero rem sit soluta magni quod illum illo velit expedita unde iste. Veniam eius eos iste, a dolore rerum delectus hic at?",
-        aliveUrl: "",
-        SourceUrl: "",
-        id: 1,
+        title: "Melee Combat System",
+        des: "A modular combat framework for fighting games",
+        tags: ['C#', 'Unity'],
+        imgUrl: MCS_img,
+        intro: "A Unity-based combat framework that demonstrates core mechanics of modern action games, featuring combo systems, weapon switching, and animation-driven gameplay.",
+        aliveUrl: "https://github.com/WeizhengLiang/melee-combat-system/releases/tag/v0.1",
+        SourceUrl: "https://github.com/WeizhengLiang/melee-combat-system/tree/main",
+        id: 4,
     }, {
         title: "More",
         des: "Deploy your new project in one-click.",
         tags: ['C#', 'Unity', 'PhotoShop', 'Vue3', 'Nuxt3'],
-        imgUrl: img1,
+        imgUrl: polyspell_img,
         intro: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero rem sit soluta magni quod illum illo velit expedita unde iste. Veniam eius eos iste, a dolore rerum delectus hic at?",
         aliveUrl: "",
         SourceUrl: "",

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import CodeBlock from '@/components/ui/code-block'
 
 const MainBG = {
     url: '/images/DungBallDomination/mainmenu.png'
@@ -91,15 +92,21 @@ graph TD
     D -->|TooSmall| I[Game Over]
 `)
 
-const codeSnippets = {
-  BeetleMovement: `void UpdateMovement(Vector2 input) {
+const codeSnippets = [
+  {
+    title: 'Beetle Movement',
+    code: `void UpdateMovement(Vector2 input) {
     // Calculate movement direction
     Vector2 direction = input.normalized;
     // Move beetle and attached dung ball
     transform.position += direction * speed * Time.deltaTime;
     dungBall.UpdatePosition(transform.position);
 }`,
-  DungTrail: `void LeaveDungTrail() {
+    language: 'csharp'
+  },
+  {
+    title: 'Dung Trail',
+    code: `void LeaveDungTrail() {
     if (Input.GetKey(KeyCode.Space) && dungBall.size > minSize) {
         // Create dung trail based on ball size
         float radius = dungBall.size * trailMultiplier;
@@ -108,16 +115,24 @@ const codeSnippets = {
         dungBall.DecreaseSize(decreaseRate * Time.deltaTime);
     }
 }`,
-  CoverageCheck: `bool CheckWinCondition() {
+    language: 'csharp'
+  },
+  {
+    title: 'Coverage Check',
+    code: `bool CheckWinCondition() {
     // Calculate current coverage percentage
     float coverage = GetDungCoverage();
     // Check if reached target coverage
     return coverage >= targetCoveragePercent;
-}`
-}
+}`,
+    language: 'csharp'
+  }
+]
 
-const keyAlgorithms = {
-  DungCoverage: `float CalculateDungCoverage() {
+const keyAlgorithms = [
+  {
+    title: 'Dung Coverage',
+    code: `float CalculateDungCoverage() {
     int totalPixels = groundTexture.width * groundTexture.height;
     int coveredPixels = 0;
     
@@ -129,14 +144,20 @@ const keyAlgorithms = {
     
     return (float)coveredPixels / totalPixels * 100f;
 }`,
-  CollisionDetection: `void CheckFootstepCollision(Vector2 footPosition) {
+    language: 'csharp'
+  },
+  {
+    title: 'Collision Detection',
+    code: `void CheckFootstepCollision(Vector2 footPosition) {
     float distance = Vector2.Distance(transform.position, footPosition);
     if (distance < (dungBall.size + footSize) * 0.5f) {
         // Game over if stepped on
         GameManager.Instance.GameOver();
     }
-}`
-}
+}`,
+    language: 'csharp'
+  }
+]
 
 const openLink = (url) => {
   window.open(url, '_blank')
@@ -248,26 +269,26 @@ const openLink = (url) => {
         </div>
         
         <!-- Key Algorithms -->
-        <div class="mt-8">
-          <h3 class="font-bold text-xl mb-4">Key Algorithms</h3>
-          <div class="space-y-6">
-            <div>
-              <h4 class="text-lg font-semibold mb-3">Polygon Recognition</h4>
-              <div class="bg-gray-50 rounded-lg p-6">
-                <pre class="bg-gray-100 p-4 rounded-lg"><code>{{ keyAlgorithms.PolygonRecognition }}</code></pre>
-                <p class="mt-4 text-sm text-gray-600">
-                  Winding number algorithm for accurate point-in-polygon detection
-                </p>
-              </div>
-            </div>
+        <div class="space-y-8">
+          <!-- Code Snippets -->
+          <div v-for="snippet in codeSnippets" :key="snippet.title">
+            <CodeBlock 
+              :code="snippet.code"
+              :language="snippet.language"
+              :title="snippet.title"
+            />
+          </div>
 
-            <div>
-              <h4 class="text-lg font-semibold mb-3">Dynamic Ball Physics</h4>
-              <div class="bg-gray-50 rounded-lg p-6">
-                <pre class="bg-gray-100 p-4 rounded-lg"><code>{{ keyAlgorithms.BallPhysics }}</code></pre>
-                <p class="mt-4 text-sm text-gray-600">
-                  Custom physics system for smooth ball movement and collision handling
-                </p>
+          <!-- Key Algorithms -->
+          <div class="mt-8">
+            <h3 class="font-bold text-xl mb-4">Key Algorithms</h3>
+            <div class="space-y-6">
+              <div v-for="algo in keyAlgorithms" :key="algo.title">
+                <CodeBlock 
+                  :code="algo.code"
+                  :language="algo.language"
+                  :title="algo.title"
+                />
               </div>
             </div>
           </div>

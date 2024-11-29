@@ -1,0 +1,11 @@
+/* 方案 1: 使用普通 CSS */
+.code-block {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 1px solid rgb(229, 231, 235);
+    background-color: #1E1E1E;
+    margin-bottom: 1rem;
+}
+
+/* 或者方案 2: 确保文件扩展名为 .pcss 或 .postcss */
+/* 将 style.css 重命名为 style.postcss */
