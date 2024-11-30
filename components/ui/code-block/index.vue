@@ -14,6 +14,7 @@
   import { computed, onMounted } from 'vue'
   import Prism from 'prismjs'
   import 'prismjs/themes/prism-tomorrow.css'
+  import 'prismjs/components/prism-clike'
   import 'prismjs/components/prism-csharp'
   import 'prismjs/components/prism-typescript'
   import 'prismjs/components/prism-javascript'
