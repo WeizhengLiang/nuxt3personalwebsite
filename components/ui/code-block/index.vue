@@ -12,12 +12,6 @@
   
   <script setup lang="ts">
   import { computed, onMounted } from 'vue'
-  import Prism from 'prismjs'
-  import 'prismjs/themes/prism-tomorrow.css'
-  import 'prismjs/components/prism-clike'
-  import 'prismjs/components/prism-csharp'
-  import 'prismjs/components/prism-typescript'
-  import 'prismjs/components/prism-javascript'
   
   const props = defineProps({
     code: {
@@ -32,17 +26,5 @@
       type: String,
       required: true
     }
-  })
-  
-  const highlightedCode = computed(() => {
-    return Prism.highlight(
-      props.code,
-      Prism.languages[props.language],
-      props.language
-    )
-  })
-  
-  onMounted(() => {
-    Prism.highlightAll()
   })
   </script>
