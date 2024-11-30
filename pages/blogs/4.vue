@@ -48,7 +48,10 @@ const keyFeatures = [
   {
     title: 'Precise Hit Detection System',
     description: 'An animation-driven hit detection framework that accurately maps weapon trajectories and calculates hit trails for unparalleled combat precision.',
-    code: true
+    media: {
+      url: '/images/MCS/MCS_003.gif',
+      des: 'Hit Detection System'
+    }
   },
   {
     title: 'Robust Editor Tools',
@@ -301,9 +304,13 @@ onMounted( async () => {
             
             <!-- 根据特性类型显示图片或代码 -->
             <template v-if="feature.code">
-              <div class="relative aspect-video bg-gray-900 rounded-lg overflow-hidden">
+              <div class="relative aspect-video bg-gray-900 rounded-lg overflow-hidden cursor-pointer" 
+                   @click="showCodeModal = true">
                 <div class="absolute inset-0 p-4">
                   <pre class="text-sm h-full overflow-hidden text-white">{{ hitDetectionCode }}</pre>
+                </div>
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                  <span class="text-white text-sm">Click to view full code</span>
                 </div>
               </div>
             </template>
