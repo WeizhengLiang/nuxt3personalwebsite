@@ -21,7 +21,8 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-09-17',
   plugins: [
-    '~/plugins/mermaid.js'
+    '~/plugins/mermaid.js',
+    { src: '~/plugins/prism.js', mode: 'client' }
   ],
 
   css: [
