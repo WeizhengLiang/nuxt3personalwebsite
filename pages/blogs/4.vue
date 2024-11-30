@@ -182,48 +182,9 @@ graph TB
     DH --> |OnDamageDealt| CUI
 `)
 
-const attackSequenceDiagram = ref(`
-sequenceDiagram
-    participant P as Player/NPC
-    participant IM as InputManager
-    participant MCI as MeleeCombatInput
-    participant RC as RPGCharacterController
-    participant MCS as MeleeCombatSystem
-    participant AC as AnimationController
-    participant ES as EventSystem
-    participant DH as DamageHandler
-    participant CUI as CombatUIManager
+const attackSequenceDiagram = ref(null)
 
-    P->>IM: Press Attack Button (J)
-    IM->>MCI: HandleAttackInput()
-    MCI->>RC: CanStartAction(Attack)
-    RC-->>MCI: true/false
-    MCI->>MCS: PerformAttack(animNumber, attackLevel)
-    MCS->>AC: Play Attack Animation
-    AC->>ES: OnAttackStart
-    AC->>ES: OnHitDetection
-    ES->>DH: Calculate Damage
-    DH->>CUI: Update Combat UI
-`)
-
-const weaponSwitchSequenceDiagram = ref(`
-sequenceDiagram
-    participant P as Player/NPC
-    participant IM as InputManager
-    participant MCI as MeleeCombatInput
-    participant RC as RPGCharacterController
-    participant WM as WeaponManager
-    participant AC as AnimationController
-    participant CUI as CombatUIManager
-
-    P->>IM: Press Weapon Toggle (U)
-    IM->>MCI: OnWeaponToggle
-    MCI->>RC: CanStartAction(SwitchWeapon)
-    RC-->>MCI: true/false
-    MCI->>WM: Switch Weapon
-    WM->>AC: Play Switch Animation
-    AC->>CUI: Update Weapon Display
-`)
+const weaponSwitchSequenceDiagram = ref(null)
 
 const hitDetectionCode = ref(`private void Update()
 {
@@ -270,6 +231,56 @@ private void CheckHitAtPoint(Transform attackPoint, float attackRadius, Weapon w
 }`)
 
 const showCodeModal = ref(false)
+const loadAttackMermaid = async () => {
+    attackSequenceDiagram.value = `
+sequenceDiagram
+    participant P as Player/NPC
+    participant IM as InputManager
+    participant MCI as MeleeCombatInput
+    participant RC as RPGCharacterController
+    participant MCS as MeleeCombatSystem
+    participant AC as AnimationController
+    participant ES as EventSystem
+    participant DH as DamageHandler
+    participant CUI as CombatUIManager
+
+    P->>IM: Press Attack Button (J)
+    IM->>MCI: HandleAttackInput()
+    MCI->>RC: CanStartAction(Attack)
+    RC-->>MCI: true/false
+    MCI->>MCS: PerformAttack(animNumber, attackLevel)
+    MCS->>AC: Play Attack Animation
+    AC->>ES: OnAttackStart
+    AC->>ES: OnHitDetection
+    ES->>DH: Calculate Damage
+    DH->>CUI: Update Combat UI
+`
+}
+const loadWeaponMermaid = async () => {
+    weaponSwitchSequenceDiagram.value = `
+sequenceDiagram
+    participant P as Player/NPC
+    participant IM as InputManager
+    participant MCI as MeleeCombatInput
+    participant RC as RPGCharacterController
+    participant WM as WeaponManager
+    participant AC as AnimationController
+    participant CUI as CombatUIManager
+
+    P->>IM: Press Weapon Toggle (U)
+    IM->>MCI: OnWeaponToggle
+    MCI->>RC: CanStartAction(SwitchWeapon)
+    RC-->>MCI: true/false
+    MCI->>WM: Switch Weapon
+    WM->>AC: Play Switch Animation
+    AC->>CUI: Update Weapon Display
+`
+}
+
+onMounted( async () => {
+    await loadAttackMermaid()
+    await loadWeaponMermaid()
+})
 </script>
 
 <template>
@@ -374,31 +385,31 @@ const showCodeModal = ref(false)
               <p class="text-gray-700 mb-4">
                 Demonstrates the flow of an attack action from input to damage calculation and UI updates:
               </p>
-              <div class="bg-gray-50 rounded-lg p-6">
-                <div class="mermaid-container" style="height: 360px;">
+              <div class="bg-gray-50 rounded-lg p-6" v-if="attackSequenceDiagram">
+                <div class="mermaid-container">
                   <vue-mermaid-string 
                     :value="attackSequenceDiagram"
-                    :key="'attack-sequence'"
+                    key="attack-sequence"
                   ></vue-mermaid-string>
                 </div>
               </div>
             </div>
 
             <!-- Weapon Switch Sequence -->
-            <!-- <div class="relative">
+            <div class="relative">
               <h4 class="font-semibold text-lg mb-2">2. Weapon Switch Sequence</h4>
               <p class="text-gray-700 mb-4">
                 Shows the process of switching weapons and updating related systems:
               </p>
-              <div class="bg-gray-50 rounded-lg p-6">
-                <div class="mermaid-container" style="height: 330px;">
+              <div class="bg-gray-50 rounded-lg p-6" v-if="weaponSwitchSequenceDiagram">
+                <div class="mermaid-container">
                   <vue-mermaid-string 
-                    :value="weaponSwitchSequenceDiagram"
-                    :key="'weapon-switch'"
+                    :value="weaponSwitchSequenceDiagram"  
+                    key="weapon-switch"
                   ></vue-mermaid-string>
                 </div>
               </div>
-            </div> -->
+            </div>
           </div>
         </div>
       </BlogBody>
@@ -695,6 +706,7 @@ const showCodeModal = ref(false)
 .mermaid-container {
   position: relative;
   width: 100%;
+  height: calc(var(--container-width) * 0.75);
   overflow: visible;
 }
 
