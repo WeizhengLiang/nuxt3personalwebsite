@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import CodeBlock from '@/components/ui/code-block'
+import 'highlight.js/styles/github-dark.css' // 或其他主题
 
 const MainBG = {
     url: '/images/DungBallDomination/mainmenu.png'
@@ -22,7 +23,6 @@ const items = [
     // {type: 'Achievement', text: ['Top 15% Overall rating', 'Top 1.5% in Humor rating']}
 ]
 
-//const intro = 'PolySpell is a unique puzzle game that blends shape-based spell casting with strategic combat. As a solo developer, I created this game to challenge players\' creativity and problem-solving skills in a vibrant, magical world.'
 const intro = 'Get ready to roll with Dungball Domination, a cartoony top-down view casual game! After your beloved dung ball being trampled by a farmer, your mission is to contaminate the farm to take revenge on the farmer! Sneaking into the farm, you\'ll need to collect dung dropped by the livestock and cover the floors in a smelly masterpiece. But watch out! The farmer and his animals are on the lookout. Dodge their footsteps to survive! Fill every corner with dung and leave the farmer overwhelmed by the stench to claim your victory in this hilarious battle of wits!'
 
 const coreFeatures = [
@@ -261,9 +261,13 @@ const openLink = (url) => {
             <vue-mermaid-string :value="gameFlowDiagram"></vue-mermaid-string>
           </div>
           <div class="space-y-4">
-            <div v-for="(snippet, key) in codeSnippets" :key="key">
-              <h3 class="font-bold">{{ key }}()</h3>
-              <pre class="bg-gray-100 p-2 rounded"><code>{{ snippet }}</code></pre>
+            <div v-for="snippet in codeSnippets" :key="snippet.title">
+              <h3 class="font-bold">{{ snippet.title }}</h3>
+              <CodeBlock 
+                :code="snippet.code"
+                :language="snippet.language"
+                :title="snippet.title"
+              />
             </div>
           </div>
         </div>

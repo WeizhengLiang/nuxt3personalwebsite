@@ -2,6 +2,7 @@
 import polyspell_img from '@/public/images/PolySpell/triangle.png'
 import dungball_img from '@/public/images/DungBallDomination/mainmenu.png'
 import MCS_img from '@/public/images/MCS/MCS_003.gif'
+import Alien_img from '@/public/images/Alien/coverpage.png'
 
 const items = ref([
     {
@@ -32,14 +33,14 @@ const items = ref([
         SourceUrl: "https://github.com/WeizhengLiang/melee-combat-system/tree/main",
         id: 4,
     }, {
-        title: "More",
-        des: "Deploy your new project in one-click.",
-        tags: ['C#', 'Unity', 'PhotoShop', 'Vue3', 'Nuxt3'],
-        imgUrl: polyspell_img,
-        intro: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero rem sit soluta magni quod illum illo velit expedita unde iste. Veniam eius eos iste, a dolore rerum delectus hic at?",
-        aliveUrl: "",
-        SourceUrl: "",
-        id: 1,
+        title: "Knock Knock Alien Is Here",
+        des: "A fast-paced 2D game last 20 seconds",
+        tags: ['C#', 'Unity'],
+        imgUrl: Alien_img,
+        intro: "Step into the shoes of an unlucky scientist who finds himself on the run from an alien death warrant!  In this fast-paced 2D game, you have just 20 seconds to barricade your door and save your life.",
+        aliveUrl: "https://bestdtang.itch.io/knock-knock-alien-is-here",
+        SourceUrl: "https://github.com/WeizhengLiang/Knock-Knock-Alien-is-There",
+        id: 5,
     }
 ])
 

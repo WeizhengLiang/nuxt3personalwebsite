@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import CodeBlock from '@/components/ui/code-block'
+import 'highlight.js/styles/github-dark.css' // 或其他主题
 
 const MainBG = {
   url: '/images/MCS/MCS_004.gif'

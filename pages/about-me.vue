@@ -5,22 +5,22 @@ import Introduction from './introduction.vue';
 
 const steps = [{
   step: 1,
-  title: '罗格斯大学',
+  title: 'Rutgers University',
   description: 'Computer Science',
   icon: AArrowDown,
 }, {
   step: 2,
-  title: '香港大学',
+  title: 'The University of Hong Kong',
   description: 'Computer Science',
   icon: Truck,
 }, {
   step: 3,
-  title: '竹子科技',
+  title: 'Zhanxun Network Technology',
   description: 'Game Development',
   icon: CreditCard,
 }, {
   step: 4,
-  title: '自由职业',
+  title: 'Freelance',
   description: 'Game Development',
   icon: Check,
 }]

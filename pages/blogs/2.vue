@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import 'highlight.js/styles/github-dark.css' // 或其他主题
 
 const qudrilateralFormImage = {
     url: '/images/PolySpell/qudrilateral_form.png',
