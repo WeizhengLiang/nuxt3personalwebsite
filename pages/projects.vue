@@ -5,6 +5,36 @@ import MCS_img from '@/public/images/MCS/MCS_003.gif'
 import Alien_img from '@/public/images/Alien/coverpage.png'
 
 const items = ref([
+{
+        title: "Knock Knock Alien Is Here",
+        des: "A fast-paced 2D game last 20 seconds",
+        tags: ['C#', 'Unity'],
+        imgUrl: Alien_img,
+        intro: "Step into the shoes of an unlucky scientist who finds himself on the run from an alien death warrant!  In this fast-paced 2D game, you have just 20 seconds to barricade your door and save your life.",
+        aliveUrl: "https://bestdtang.itch.io/knock-knock-alien-is-here",
+        SourceUrl: "https://github.com/WeizhengLiang/Knock-Knock-Alien-is-There",
+        id: 5,
+    },
+    {
+        title: "Dungball Domination",
+        des: "A Game Jam Adventure",
+        tags: ['C#', 'Unity'],
+        imgUrl: dungball_img,
+        intro: "After your beloved dung ball being trampled by a farmer, your mission is to contaminate the farm to take revenge on the farmer!",
+        aliveUrl: "https://ldjam.com/events/ludum-dare/56/dungball-domination",
+        SourceUrl: "https://github.com/minnnpan/ShiKeLang",
+        id: 3,
+    },
+    {
+        title: "Melee Combat System",
+        des: "A modular combat framework for fighting games",
+        tags: ['C#', 'Unity'],
+        imgUrl: MCS_img,
+        intro: "A Unity-based combat framework that demonstrates core mechanics of modern action games, featuring combo systems, weapon switching, and animation-driven gameplay.",
+        aliveUrl: "https://github.com/WeizhengLiang/melee-combat-system/releases/tag/v0.1",
+        SourceUrl: "https://github.com/WeizhengLiang/melee-combat-system/tree/main",
+        id: 4,
+    },
     {
         title: "PolySpell",
         des: "Survive and Spell",
@@ -14,34 +44,7 @@ const items = ref([
         aliveUrl: "https://play.unity.com/en/games/1e487e88-1290-4639-9562-490eca0f9a66/polyspell-v01",
         SourceUrl: "https://github.com/WeizhengLiang/PolySpell",
         id: 2,
-    }, {
-        title: "Dungball Domination",
-        des: "A Game Jam Adventure",
-        tags: ['C#', 'Unity'],
-        imgUrl: dungball_img,
-        intro: "After your beloved dung ball being trampled by a farmer, your mission is to contaminate the farm to take revenge on the farmer!",
-        aliveUrl: "https://ldjam.com/events/ludum-dare/56/dungball-domination",
-        SourceUrl: "https://github.com/minnnpan/ShiKeLang",
-        id: 3,
-    }, {
-        title: "Melee Combat System",
-        des: "A modular combat framework for fighting games",
-        tags: ['C#', 'Unity'],
-        imgUrl: MCS_img,
-        intro: "A Unity-based combat framework that demonstrates core mechanics of modern action games, featuring combo systems, weapon switching, and animation-driven gameplay.",
-        aliveUrl: "https://github.com/WeizhengLiang/melee-combat-system/releases/tag/v0.1",
-        SourceUrl: "https://github.com/WeizhengLiang/melee-combat-system/tree/main",
-        id: 4,
-    }, {
-        title: "Knock Knock Alien Is Here",
-        des: "A fast-paced 2D game last 20 seconds",
-        tags: ['C#', 'Unity'],
-        imgUrl: Alien_img,
-        intro: "Step into the shoes of an unlucky scientist who finds himself on the run from an alien death warrant!  In this fast-paced 2D game, you have just 20 seconds to barricade your door and save your life.",
-        aliveUrl: "https://bestdtang.itch.io/knock-knock-alien-is-here",
-        SourceUrl: "https://github.com/WeizhengLiang/Knock-Knock-Alien-is-There",
-        id: 5,
-    }
+    },
 ])
 
 const tagClass = {
@@ -58,22 +61,22 @@ const tagClass = {
     <div class="w-full">
         <h2>Projects</h2>
         <div v-for="(item, index) in items" :key="index" class="card-box">
-            <Card class="w-full max-w-3xl mt-4 mb-8 card-container">
+            <Card class="w-full mt-4 mb-8 card-container">
                 <div class="img-container">
                     <img :src="item.imgUrl" class="img" alt="image info" />
                 </div>
                 <div>
                     <CardHeader>
-                        <CardTitle>{{ item.title }}</CardTitle>
+                        <CardTitle><h4>{{ item.title }}</h4></CardTitle>
                         <CardDescription>{{ item.des }}</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <div class="flex gap-2">
                             <template v-for="tag in item.tags" :key="tag">
-                                <div :class="tagClass[tag]">{{ tag }}</div>
+                                <div class="text-sm" :class="tagClass[tag]">{{ tag }}</div>
                             </template>
                         </div>
-                        <p>{{ item.intro }}</p>
+                        <p class="mt-4">{{ item.intro }}</p>
                     </CardContent>
                     <CardFooter class="flex gap-4 justify-between px-6 pb-6">
                         <NuxtLink :to="`/blogs/${item.id}`">
@@ -109,25 +112,29 @@ const tagClass = {
     display: flex;
 }
 .img-container {
-  overflow: hidden;
-  width: 100%;
-  /* height: 100px; */
+    width: 100%;
+    height: 100%; /* 会自动适应 grid 容器高度 */
+    overflow: hidden;
 }
 
 .img-container img {
-  object-fit: cover;
-  width: 100%;
-  min-height: 100%;
+    width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem 0 0 0.5rem;
+    display: block; /* 消除图片底部间隙 */
 }
 @media screen and (max-width: 838px) {
     .card-container {
         display: block;
-        max-width: 600px;
+        /* max-width: 600px; */
     }
 }
 @media screen and (min-width: 838px) {
     .card-container {
-        display: flex;
+        display: grid;
+        grid-template-columns: 300px 1fr; /* 图片固定宽度 */
+        gap: 1rem;
     }
 }
 </style>

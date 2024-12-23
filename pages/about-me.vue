@@ -46,7 +46,7 @@ const steps = [{
                     </StepperIndicator>
                     <div class="flex flex-col">
                     <StepperTitle>
-                        {{ item.title }}
+                        <span class="text-base">{{ item.title }}</span>
                     </StepperTitle>
                     <StepperDescription>
                         {{ item.description }}

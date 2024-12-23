@@ -236,6 +236,15 @@ const openLink = (url) => {
     <BlogTitle :title="title" />
     <BlogIntro :items="items" :intro="intro" />
 
+    <div class="flex justify-end gap-4 mt-6">
+        <Button @click="openLink(links.source)" variant="outline">
+          View Source Code
+        </Button>
+        <Button @click="openLink(links.demo)">
+          Play Demo
+        </Button>
+      </div>
+
     <div class="blog-main-container">
       <BlogImage :image="qudrilateralFormImage" />
 

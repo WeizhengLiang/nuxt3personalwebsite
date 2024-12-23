@@ -76,12 +76,21 @@
     @apply bg-background text-foreground;
   }
   h1 {
-    @apply text-[36px] font-[700];
+    @apply text-[36px] font-[700] font-['Atma'];
   }
   h2 {
-    @apply text-[32px] font-[700];
+    @apply text-[32px] font-[700] font-['Atma'];
+  }
+  h3 {
+    @apply text-[28px] font-[700] font-['Atma'];
+  }
+  h4 {
+    @apply text-[24px] font-[700] font-['Atma'];
   }
   p {
     @apply text-neutral-400 m-0;
+  }
+  .title-text {
+    @apply font-[700] font-['Atma'];
   }
 }

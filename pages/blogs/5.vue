@@ -781,6 +781,16 @@ const highlightCode = (code, language) => {
     <BlogTitle :title="title" />
     <BlogIntro :items="items" :intro="intro" />
 
+    <div class="flex justify-end gap-4 mt-6">
+        <Button @click="openLink(links.source)" variant="outline">
+          View Source Code
+        </Button>
+
+        <Button @click="openLink(links.demo)">
+          Play Demo
+        </Button>
+    </div>
+
     <div class="blog-main-container">
       <BlogImage :image="MainBG" />
 
@@ -1237,7 +1247,7 @@ const highlightCode = (code, language) => {
 </div>
 
 
-      <div class="flex justify-between mt-6">
+      <div class="flex justify-between w-full mt-6">
         <Button @click="openLink(links.demo)">
           Play Demo
         </Button>

@@ -19,9 +19,9 @@ const items = ref([
 <template>
     <div class="fixed">
         <NuxtLink :href="'/'">
-            <header class="flex items-center gap-2 p-4 hover:scale-[101%] transition cursor-pointer">'
+            <header class="flex items-center gap-2 p-4 hover:scale-[101%] transition cursor-pointer">
                 <Logo />
-                <div class="font-bold">Hip Hog</div>
+                <div class="font-bold title-text">Weizheng Liang</div>
             </header>
         </NuxtLink>
         

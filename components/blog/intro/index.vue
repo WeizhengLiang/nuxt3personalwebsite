@@ -9,10 +9,10 @@ const props = defineProps({
 </script>
 
 <template>
-     <div class="introduction grid grid-cols-4 gap-2 my-8">
-        <div class="lg:col-span-1 md:col-span-2 sm:col-span-4 grid grid-cols-2 gap-2" >
+     <div class="introduction grid lg:grid-cols-5 grid-cols-4 gap-2 my-8">
+        <div class="lg:col-span-2 md:col-span-2 sm:col-span-4 grid grid-cols-2 gap-2" >
             <div v-for="item in props.items">
-                <div class="font-black">
+                <div class="font-black title-text">
                     {{ item.type }}
                 </div>
                 <div>

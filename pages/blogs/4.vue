@@ -292,6 +292,16 @@ onMounted( async () => {
     <BlogTitle :title="title" />
     <BlogIntro :items="items" :intro="intro" />
 
+    <!-- Links -->
+    <div class="flex justify-end gap-4 mt-6">
+      <Button @click="openLink(links.source)" variant="outline">
+        View Source Code
+      </Button>
+      <Button @click="openLink(links.demo)">
+        Download Page
+      </Button>
+    </div>
+
     <div class="blog-main-container">
       <BlogImage :image="wukongBG" />
 

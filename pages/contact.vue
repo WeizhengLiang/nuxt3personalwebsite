@@ -1,12 +1,12 @@
 <script setup>
 const items = ref([
     {
-        title: "your github",
-        path: "https://twitter.com/nuxt_js",
+        title: "Github",
+        path: "https://github.com/weizhengliang",
         icon: "uiw:github"
     }, {
-        title: "your linkedin",
-        path: "http:linkedin",
+        title: "Linkedin",
+        path: "https://www.linkedin.com/in/weizhengliang/",
         icon: "mdi:linkedin"
     }, {
         title: "weizhengliang@gmail.com",

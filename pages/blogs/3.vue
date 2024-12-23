@@ -169,6 +169,15 @@ const openLink = (url) => {
     <BlogTitle :title="title" />
     <BlogIntro :items="items" :intro="intro" />
 
+    <div class="flex justify-end gap-4 mt-6">
+        <Button @click="openLink(links.source)" variant="outline">
+          View Source Code
+        </Button>
+        <Button @click="openLink(links.demo)">
+          Play Demo
+        </Button>
+      </div>
+
     <div class="blog-main-container">
       <BlogImage :image="MainBG" />
 
@@ -177,37 +186,37 @@ const openLink = (url) => {
         <BlogBody>
           <div class="bg-gray-50 rounded-lg p-6 mb-6">
             <h4 class="text-lg font-semibold mb-3">Ludum Dare 56 Rankings</h4>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="grid lg:grid-cols-4 grid-cols-2 gap-4">
               <div class="bg-white p-4 rounded-lg text-center">
-                <div class="text-2xl font-bold text-primary">Top 16.8%</div>
+                <h4 class="text-2xl font-bold text-primary">Top 16.8%</h4>
                 <div class="text-sm text-gray-600">Overall</div>
               </div>
               <div class="bg-white p-4 rounded-lg text-center">
-                <div class="text-2xl font-bold text-primary">Top 12.5%</div>
+                <h4 class="text-2xl font-bold text-primary">Top 12.5%</h4>
                 <div class="text-sm text-gray-600">Fun</div>
               </div>
               <div class="bg-white p-4 rounded-lg text-center">
-                <div class="text-2xl font-bold text-primary">Top 13%</div>
+                <h4 class="text-2xl font-bold text-primary">Top 13%</h4>
                 <div class="text-sm text-gray-600">Innovation</div>
               </div>
               <div class="bg-white p-4 rounded-lg text-center">
-                <div class="text-2xl font-bold text-primary">Top 7.5%</div>
+                <h4 class="text-2xl font-bold text-primary">Top 7.5%</h4>
                 <div class="text-sm text-gray-600">Theme</div>
               </div>
               <div class="bg-white p-4 rounded-lg text-center">
-                <div class="text-2xl font-bold text-primary">Top 13.5%</div>
+                <h4 class="text-2xl font-bold text-primary">Top 13.5%</h4>
                 <div class="text-sm text-gray-600">Graphics</div>
               </div>
               <div class="bg-white p-4 rounded-lg text-center">
-                <div class="text-2xl font-bold text-primary">Top 8.7%</div>
+                <h4 class="text-2xl font-bold text-primary">Top 8.7%</h4>
                 <div class="text-sm text-gray-600">Audio</div>
               </div>
               <div class="bg-white p-4 rounded-lg text-center">
-                <div class="text-2xl font-bold text-primary">Top 1.6%</div>
+                <h4 class="text-2xl font-bold text-primary">Top 1.6%</h4>
                 <div class="text-sm text-gray-600">Humor</div>
               </div>
               <div class="bg-white p-4 rounded-lg text-center">
-                <div class="text-2xl font-bold text-primary">Top 20%</div>
+                <h4 class="text-2xl font-bold text-primary">Top 20%</h4>
                 <div class="text-sm text-gray-600">Mood</div>
               </div>
             </div>
@@ -215,7 +224,7 @@ const openLink = (url) => {
 
           <div class="space-y-4">
             <h4 class="text-lg font-semibold">Player Comments</h4>
-            <div class="grid grid-cols-1 gap-4">
+            <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
               <div class="bg-white p-4 rounded-lg border">
                 <p class="italic">"OMG SO FUN I LOVE IT"</p>
               </div>
@@ -236,9 +245,10 @@ const openLink = (url) => {
       <BlogBody>
         <h2>Core Features</h2>
         <div class="grid grid-cols-2 gap-8">
-          <div v-for="feature in coreFeatures" :key="feature.title" class="mb-8">
+          <div v-for="(feature, index) in coreFeatures" :key="feature.title" class="mb-8">
             <h3 class="font-bold">{{ feature.title }}</h3>
             <p class="mb-4">{{ feature.description }}</p>
+            <br v-if="index === 1">
             <img 
               v-if="feature.media" 
               :src="feature.media.url" 
@@ -255,37 +265,31 @@ const openLink = (url) => {
           <h2>Game Flow and Key Code Snippets</h2>
           <p>This diagram illustrates the core gameplay loop of PolySpell, along with key code snippets:</p>
         </BlogBody>
-
-        <div class="flex justify-between gap-2 my-4">
-          <div class="flex justify-center items-center">
-            <vue-mermaid-string :value="gameFlowDiagram"></vue-mermaid-string>
-          </div>
-          <div class="space-y-4">
-            <div v-for="snippet in codeSnippets" :key="snippet.title">
-              <h3 class="font-bold">{{ snippet.title }}</h3>
-              <CodeBlock 
-                :code="snippet.code"
-                :language="snippet.language"
-                :title="snippet.title"
-              />
-            </div>
-          </div>
-        </div>
         
-        <!-- Key Algorithms -->
-        <div class="space-y-8">
-          <!-- Code Snippets -->
+        <div class="w-full mb-4">
+          <vue-mermaid-string class="flex justify-center items-center" :value="gameFlowDiagram"></vue-mermaid-string>
+        </div>
+
+
+        <div class="space-y-4 w-full">
+          <h3>Key Code Snippets</h3>
           <div v-for="snippet in codeSnippets" :key="snippet.title">
+            <!-- <h3>{{ snippet.title }}</h3> -->
             <CodeBlock 
               :code="snippet.code"
               :language="snippet.language"
               :title="snippet.title"
             />
           </div>
+        </div>
+        <!-- </div> -->
+        
+        <!-- Key Algorithms -->
+        <div class="space-y-8 w-full">
 
           <!-- Key Algorithms -->
           <div class="mt-8">
-            <h3 class="font-bold text-xl mb-4">Key Algorithms</h3>
+            <h3>Key Algorithms</h3>
             <div class="space-y-6">
               <div v-for="algo in keyAlgorithms" :key="algo.title">
                 <CodeBlock 
@@ -379,8 +383,8 @@ const openLink = (url) => {
                     
                     <!-- Implementation -->
                     <div class="border-l-4 border-green-500 p-4 bg-white">
-                      <h4 class="text-lg font-semibold mb-2">Implementation & Reply</h4>
-                      <p class="text-gray-700">
+                      <h4 class="text-lg font-semibold text-green-500 mb-2">Implementation & Reply</h4>
+                      <p class="text-gray-700 italic">
                         "Thanks a ton for playing the game and dropping your feedback! 🙌 Just wanted to let you know that we added a new feature based on your idea! The ball now gets smaller as it rolls but grows bigger when the beetle collects dungpiles. It’s a bit of a twist, but we think it adds a fun challenge! 😄 Hope you get a chance to check it out, and we’d love to hear what you think of the update!
                         Cheers"
                       </p>
