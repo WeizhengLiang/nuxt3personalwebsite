@@ -260,49 +260,6 @@ const openLink = (url) => {
         </div>
       </BlogBody>
 
-      <!-- Game Flow Diagram and Code Snippets -->
-        <BlogBody>
-          <h2>Game Flow and Key Code Snippets</h2>
-          <p>This diagram illustrates the core gameplay loop of PolySpell, along with key code snippets:</p>
-        </BlogBody>
-        
-        <div class="w-full mb-4">
-          <vue-mermaid-string class="flex justify-center items-center" :value="gameFlowDiagram"></vue-mermaid-string>
-        </div>
-
-
-        <div class="space-y-4 w-full">
-          <h3>Key Code Snippets</h3>
-          <div v-for="snippet in codeSnippets" :key="snippet.title">
-            <!-- <h3>{{ snippet.title }}</h3> -->
-            <CodeBlock 
-              :code="snippet.code"
-              :language="snippet.language"
-              :title="snippet.title"
-            />
-          </div>
-        </div>
-        <!-- </div> -->
-        
-        <!-- Key Algorithms -->
-        <div class="space-y-8 w-full">
-
-          <!-- Key Algorithms -->
-          <div class="mt-8">
-            <h3>Key Algorithms</h3>
-            <div class="space-y-6">
-              <div v-for="algo in keyAlgorithms" :key="algo.title">
-                <CodeBlock 
-                  :code="algo.code"
-                  :language="algo.language"
-                  :title="algo.title"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Placeholder for gameplay video -->
       <!-- <div class="my-4">
         [Placeholder: Short gameplay video showcasing pattern-based combat and neon aesthetics]
@@ -407,6 +364,49 @@ const openLink = (url) => {
             </div>
           </div>
         </BlogBody>
+      </div>
+
+            <!-- Game Flow Diagram and Code Snippets -->
+            <BlogBody>
+          <h2>Game Flow and Key Code Snippets</h2>
+          <p>This diagram illustrates the core gameplay loop of PolySpell, along with key code snippets:</p>
+        </BlogBody>
+        
+        <div class="w-full mb-4">
+          <vue-mermaid-string class="flex justify-center items-center" :value="gameFlowDiagram"></vue-mermaid-string>
+        </div>
+
+
+        <div class="space-y-4 w-full">
+          <h3>Key Code Snippets</h3>
+          <div v-for="snippet in codeSnippets" :key="snippet.title">
+            <!-- <h3>{{ snippet.title }}</h3> -->
+            <CodeBlock 
+              :code="snippet.code"
+              :language="snippet.language"
+              :title="snippet.title"
+            />
+          </div>
+        </div>
+        <!-- </div> -->
+        
+        <!-- Key Algorithms -->
+        <div class="space-y-8 w-full">
+
+          <!-- Key Algorithms -->
+          <div class="mt-8">
+            <h3>Key Algorithms</h3>
+            <div class="space-y-6">
+              <div v-for="algo in keyAlgorithms" :key="algo.title">
+                <CodeBlock 
+                  :code="algo.code"
+                  :language="algo.language"
+                  :title="algo.title"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Placeholder for before/after comparison image -->

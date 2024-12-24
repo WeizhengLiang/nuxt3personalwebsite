@@ -851,71 +851,6 @@ const highlightCode = (code, language) => {
         </div>
       </BlogBody>
 
-      <BlogBody>
-        <h2>Game Flow and Key Code Snippets</h2>
-        <p>This diagram illustrates the core gameplay loop:</p>
-        
-        <div class="my-8">
-          <div class="w-full overflow-x-auto bg-white p-6 rounded-lg shadow-lg">
-            <div class="min-w-[800px]">
-              <vue-mermaid-string 
-                :value="gameFlowDiagram"
-                :config="{
-                  theme: 'default',
-                  themeVariables: {
-                    fontSize: '16px',
-                    fontFamily: 'Inter, system-ui, sans-serif',
-                  },
-                  flowchart: {
-                    diagramPadding: 8,
-                    nodeSpacing: 50,
-                    rankSpacing: 50,
-                    curve: 'basis'
-                  }
-                }"
-              ></vue-mermaid-string>
-            </div>
-          </div>
-
-          <!-- Code Implementation Section -->
-          <h3 class="mt-12 font-bold text-2xl">Code Implementation</h3>
-          <div class="space-y-8">
-            <div v-for="snippet in codeSnippets" :key="snippet.title">
-              <h4 class="font-bold text-xl mb-4">{{ snippet.title }}</h4>
-              <CodeBlock 
-                :code="snippet.code"
-                :language="snippet.language"
-                :title="snippet.title"
-              />
-            </div>
-          </div>
-
-          <!-- Key Algorithms Section -->
-          <h3 class="mt-12 font-bold text-2xl">Key Algorithms</h3>
-          <div class="space-y-12">
-            <div v-for="algorithm in keyAlgorithms" :key="algorithm.title">
-              <h4 class="font-bold text-xl mb-4">{{ algorithm.title }}</h4>
-              <CodeBlock 
-                :code="algorithm.code"
-                :language="algorithm.language"
-                :title="algorithm.title"
-              />
-              <div class="mt-4">
-                <h4 class="font-semibold mb-2">Algorithm Features:</h4>
-                <ul class="list-disc pl-6 space-y-1">
-                  <li v-for="feature in algorithm.features" 
-                      :key="feature" 
-                      class="text-gray-700"
-                  >
-                    {{ feature }}
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </BlogBody>
-
       <div>
         <h2>Development Journey</h2>
         
@@ -1027,6 +962,71 @@ const highlightCode = (code, language) => {
               </div>
             </div>
           </section> -->
+
+          <BlogBody>
+        <h2>Game Flow and Key Code Snippets</h2>
+        <p>This diagram illustrates the core gameplay loop:</p>
+        
+        <div class="my-8">
+          <div class="w-full overflow-x-auto bg-white p-6 rounded-lg shadow-lg">
+            <div class="min-w-[800px]">
+              <vue-mermaid-string 
+                :value="gameFlowDiagram"
+                :config="{
+                  theme: 'default',
+                  themeVariables: {
+                    fontSize: '16px',
+                    fontFamily: 'Inter, system-ui, sans-serif',
+                  },
+                  flowchart: {
+                    diagramPadding: 8,
+                    nodeSpacing: 50,
+                    rankSpacing: 50,
+                    curve: 'basis'
+                  }
+                }"
+              ></vue-mermaid-string>
+            </div>
+          </div>
+
+          <!-- Code Implementation Section -->
+          <h3 class="mt-12 font-bold text-2xl">Code Implementation</h3>
+          <div class="space-y-8">
+            <div v-for="snippet in codeSnippets" :key="snippet.title">
+              <h4 class="font-bold text-xl mb-4">{{ snippet.title }}</h4>
+              <CodeBlock 
+                :code="snippet.code"
+                :language="snippet.language"
+                :title="snippet.title"
+              />
+            </div>
+          </div>
+
+          <!-- Key Algorithms Section -->
+          <h3 class="mt-12 font-bold text-2xl">Key Algorithms</h3>
+          <div class="space-y-12">
+            <div v-for="algorithm in keyAlgorithms" :key="algorithm.title">
+              <h4 class="font-bold text-xl mb-4">{{ algorithm.title }}</h4>
+              <CodeBlock 
+                :code="algorithm.code"
+                :language="algorithm.language"
+                :title="algorithm.title"
+              />
+              <div class="mt-4">
+                <h4 class="font-semibold mb-2">Algorithm Features:</h4>
+                <ul class="list-disc pl-6 space-y-1">
+                  <li v-for="feature in algorithm.features" 
+                      :key="feature" 
+                      class="text-gray-700"
+                  >
+                    {{ feature }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </BlogBody>
 
           <!-- Team & Communication Section -->
           <section>

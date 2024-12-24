@@ -265,51 +265,6 @@ const openLink = (url) => {
         </div>
       </BlogBody>
 
-      <!-- Game Flow Diagram and Code Snippets -->
-        <BlogBody>
-          <h2>Game Flow and Key Code Snippets</h2>
-          <p>This diagram illustrates the core gameplay loop of PolySpell, along with key code snippets:</p>
-        </BlogBody>
-
-        <div class="flex justify-between gap-2 my-4">
-          <div class="flex justify-center items-center">
-            <vue-mermaid-string :value="gameFlowDiagram"></vue-mermaid-string>
-          </div>
-          <div class="space-y-4">
-            <div v-for="(snippet, key) in codeSnippets" :key="key">
-              <h3 class="font-bold">{{ key }}()</h3>
-              <pre class="bg-gray-100 p-2 rounded"><code>{{ snippet }}</code></pre>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Key Algorithms -->
-        <div class="mt-8">
-          <h3 class="font-bold text-xl mb-4">Key Algorithms</h3>
-          <div class="space-y-6">
-            <div>
-              <h4 class="text-lg font-semibold mb-3">Polygon Recognition</h4>
-              <div class="bg-gray-50 rounded-lg p-6">
-                <pre class="bg-gray-100 p-4 rounded-lg"><code>{{ keyAlgorithms.PolygonRecognition }}</code></pre>
-                <p class="mt-4 text-sm text-gray-600">
-                  Winding number algorithm for accurate point-in-polygon detection
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h4 class="text-lg font-semibold mb-3">Dynamic Ball Physics</h4>
-              <div class="bg-gray-50 rounded-lg p-6">
-                <pre class="bg-gray-100 p-4 rounded-lg"><code>{{ keyAlgorithms.BallPhysics }}</code></pre>
-                <p class="mt-4 text-sm text-gray-600">
-                  Custom physics system for smooth ball movement and collision handling
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Placeholder for gameplay video -->
       <!-- <div class="my-4">
         [Placeholder: Short gameplay video showcasing pattern-based combat and neon aesthetics]
@@ -493,6 +448,51 @@ const openLink = (url) => {
             </div>
           </div>
         </BlogBody>
+      </div>
+
+            <!-- Game Flow Diagram and Code Snippets -->
+            <BlogBody>
+          <h2>Game Flow and Key Code Snippets</h2>
+          <p>This diagram illustrates the core gameplay loop of PolySpell, along with key code snippets:</p>
+        </BlogBody>
+
+        <div class="flex justify-between gap-2 my-4">
+          <div class="flex justify-center items-center">
+            <vue-mermaid-string :value="gameFlowDiagram"></vue-mermaid-string>
+          </div>
+          <div class="space-y-4">
+            <div v-for="(snippet, key) in codeSnippets" :key="key">
+              <h3 class="font-bold">{{ key }}()</h3>
+              <pre class="bg-gray-100 p-2 rounded"><code>{{ snippet }}</code></pre>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Key Algorithms -->
+        <div class="mt-8">
+          <h3 class="font-bold text-xl mb-4">Key Algorithms</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="text-lg font-semibold mb-3">Polygon Recognition</h4>
+              <div class="bg-gray-50 rounded-lg p-6">
+                <pre class="bg-gray-100 p-4 rounded-lg"><code>{{ keyAlgorithms.PolygonRecognition }}</code></pre>
+                <p class="mt-4 text-sm text-gray-600">
+                  Winding number algorithm for accurate point-in-polygon detection
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="text-lg font-semibold mb-3">Dynamic Ball Physics</h4>
+              <div class="bg-gray-50 rounded-lg p-6">
+                <pre class="bg-gray-100 p-4 rounded-lg"><code>{{ keyAlgorithms.BallPhysics }}</code></pre>
+                <p class="mt-4 text-sm text-gray-600">
+                  Custom physics system for smooth ball movement and collision handling
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Placeholder for before/after comparison image -->
