@@ -110,30 +110,43 @@ const tagClass = {
 }
 .card-container {
     display: flex;
+    min-height: 300px;
 }
 .img-container {
+    position: relative;
     width: 100%;
-    height: 100%; /* 会自动适应 grid 容器高度 */
+    min-height: 300px;
     overflow: hidden;
 }
 
 .img-container img {
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: none;
     border-radius: 0.5rem 0 0 0.5rem;
-    display: block; /* 消除图片底部间隙 */
+    display: block;
 }
+
 @media screen and (max-width: 838px) {
     .card-container {
         display: block;
-        /* max-width: 600px; */
+    }
+    .img-container {
+        height: 300px;
+    }
+    .img-container img {
+        border-radius: 0.5rem 0.5rem 0 0;
     }
 }
+
 @media screen and (min-width: 838px) {
     .card-container {
         display: grid;
-        grid-template-columns: 300px 1fr; /* 图片固定宽度 */
+        grid-template-columns: 300px 1fr;
         gap: 1rem;
     }
 }
